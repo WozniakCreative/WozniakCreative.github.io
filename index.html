@@ -136,6 +136,13 @@
     transition: border-color 0.25s;
   }
   .video-card:hover { border-color: var(--accent); }
+  .video-card-featured {
+    width: 100%; margin-bottom: 0;
+    border: 1px solid var(--accent);
+  }
+  .video-card-featured .video-embed { padding-bottom: 56.25%; }
+  .video-card-featured .video-meta { padding: 1.25rem 1.5rem; }
+  .video-card-featured .video-title { font-size: 1.3rem; }
   .video-embed {
     position: relative; width: 100%; padding-bottom: 56.25%; background: #1A2326;
   }
@@ -396,7 +403,21 @@
   <!-- Metrolinx -->
   <div class="video-group">
     <p class="video-group-label">Metrolinx / GO Transit — Senior Producer</p>
-    <div class="video-grid">
+
+    <!-- Featured star video - full width -->
+    <div class="video-card video-card-featured">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/ZILQbT1blAs" allowfullscreen loading="lazy" title="GO Transit Featured"></iframe>
+      </div>
+      <div class="video-meta">
+        <p class="video-client">GO Transit / Metrolinx</p>
+        <h3 class="video-title">GO Transit — Featured Production</h3>
+        <p class="video-roles">Senior Producer · Director · Writer</p>
+      </div>
+    </div>
+
+    <!-- Three supporting videos -->
+    <div class="video-grid" style="margin-top: 1.5rem;">
 
       <div class="video-card">
         <div class="video-embed">
@@ -475,6 +496,25 @@
     </div>
   </div>
 
+  <!-- ON Fitness -->
+  <div class="video-group">
+    <p class="video-group-label">ON Fitness — Content Producer</p>
+    <div class="video-grid">
+
+      <div class="video-card">
+        <div class="video-embed shorts">
+          <iframe src="https://www.youtube.com/embed/-SCF2rWF21c" allowfullscreen loading="lazy" title="ON Fitness"></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-client">ON Fitness</p>
+          <h3 class="video-title">ON Fitness Production</h3>
+          <p class="video-roles">Producer · Director</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Additional credits (no video available) -->
   <div class="video-group">
     <p class="video-group-label">Additional Credits</p>
@@ -531,47 +571,52 @@
   <div class="photo-group">
     <p class="photo-group-label">Metrolinx — Campaign Photography · Senior Producer</p>
     <div class="photo-grid">
-     <div class="photo-slot"> 
-     <img src="metrolinx-students-2.jpg" alt="UP Refresh Campagin">    
+      <div class="photo-slot">
+        <img src="metrolinx-students-2.jpg" alt="UP Refresh Campaign">
       </div>
-     <div class="photo-slot">
-      <img src="metrolinx-students-1.jpg" alt="Trip Purpose Campaign"> 
-        </div>
-     <div class="photo-slot">
-      <img src="metrolinx-presto-3.jpg" alt="PRESTO Refresh Campaign"> 
-        </div>
       <div class="photo-slot">
-      <img src="metrolinx-guidedog.jpg" alt="GO + MagnusCards Apps"> 
-        </div>
+        <img src="metrolinx-students-1.jpg" alt="Trip Purpose Campaign">
+      </div>
       <div class="photo-slot">
-      <img src="metrolinx-raptors.jpg" alt="GO Leisure Campaign"> 
-        </div>
+        <img src="metrolinx-presto-3.jpg" alt="PRESTO Refresh Campaign">
+      </div>
       <div class="photo-slot">
-      <img src="metrolinx-leafs-1.png" alt="GO Leisure Campaign"> 
-        </div>
-       
+        <img src="metrolinx-guidedog.jpg" alt="GO + MagnusCards Apps">
+      </div>
+      <div class="photo-slot">
+        <img src="metrolinx-raptors.jpg" alt="GO Leisure Campaign">
+      </div>
+      <div class="photo-slot">
+        <img src="metrolinx-leafs-1.png" alt="GO Leafs Campaign">
+      </div>
+    </div>
+  </div>
+
   <!-- SOCO Travel Photos -->
   <div class="photo-group">
     <p class="photo-group-label">SOCO Travel (Solo Travel Collection) — Content Producer</p>
     <div class="photo-grid">
       <div class="photo-slot">
         <img src="solo-finland-1.JPG" alt="Finland">
-          </div>
-      <div class="photo-slot">
-       <img src="solo-scotland-1.JPG" alt="Scotland">
       </div>
       <div class="photo-slot">
-      <img src="solo-greece-1.jpg" alt="Greece">
+        <img src="solo-scotland-1.JPG" alt="Scotland">
+      </div>
+      <div class="photo-slot">
+        <img src="solo-greece-1.jpg" alt="Greece">
       </div>
       <div class="photo-slot">
         <img src="solo-greece-2.jpg" alt="Greece">
       </div>
       <div class="photo-slot">
-       <img src="solo-scotland-2.jpg" alt="Scotland">
+        <img src="solo-scotland-2.jpg" alt="Scotland">
       </div>
       <div class="photo-slot">
-      <img src="solo-greece-4.jpg" alt="Greece">
+        <img src="solo-greece-4.jpg" alt="Greece">
       </div>
+    </div>
+  </div>
+</section>
 
 <!-- ABOUT -->
 <section id="about">
