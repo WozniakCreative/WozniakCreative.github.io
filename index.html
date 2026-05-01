@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kimberly Wozniak — Senior Content Producer & Social Media Strategist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #F2F4F5;
+    --bg-mid:    #E4E8EA;
+    --mid:       #7A8F96;
+    --ink:       #1A2326;
+    --accent:    #2A7F7F;
+    --accent-lt: #D6EBEB;
+    --rule:      #CDD4D7;
+    --card:      #E9EDEF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(242,244,245,0.93);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .nav-name {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--mid); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 0 3rem 4rem; position: relative; overflow: hidden;
+  }
+  .hero-rule {
+    position: absolute; top: 50%; left: 3rem; right: 3rem;
+    height: 0.5px; background: var(--rule);
+    transform: scaleX(0); transform-origin: left;
+    animation: expandRule 1.2s cubic-bezier(0.76,0,0.24,1) 0.3s forwards;
+  }
+  @keyframes expandRule { to { transform: scaleX(1); } }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 300;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1.5rem; opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+  .hero-title {
+    font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 300;
+    line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.8s ease 1s forwards;
+  }
+  .hero-title em { font-style: italic; color: var(--mid); }
+  .hero-desc {
+    max-width: 420px; font-size: 1.05rem; font-weight: 300;
+    color: var(--mid); line-height: 1.8;
+    opacity: 0; animation: fadeUp 0.8s ease 1.2s forwards;
+  }
+  .hero-scroll {
+    position: absolute; right: 3rem; bottom: 4rem;
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid);
+    writing-mode: vertical-rl; opacity: 0;
+    animation: fadeUp 0.8s ease 1.5s forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── TICKER ── */
+  .disciplines {
+    overflow: hidden;
+    border-top: 0.5px solid var(--rule); border-bottom: 0.5px solid var(--rule);
+    padding: 1rem 0; background: var(--card);
+  }
+  .disciplines-track {
+    display: flex; gap: 3rem;
+    animation: ticker 22s linear infinite; white-space: nowrap;
+  }
+  .disciplines-track span {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); flex-shrink: 0;
+  }
+  .disciplines-track span.dot { color: var(--accent); }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 3rem; }
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 4rem;
+    border-top: 0.5px solid var(--rule); padding-top: 1.5rem;
+  }
+  .section-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 0.1em; }
+  .section-title { font-size: 0.85rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; }
+
+  /* ── VIDEO GRID ── */
+  .video-group { margin-bottom: 4rem; }
+  .video-group-label {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .video-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .video-card {
+    background: var(--card); border: 0.5px solid var(--rule);
+    border-radius: 4px; overflow: hidden;
+    transition: border-color 0.25s;
+  }
+  .video-card:hover { border-color: var(--accent); }
+  .video-embed {
+    position: relative; width: 100%; padding-bottom: 56.25%; background: #1A2326;
+  }
+  /* YouTube Shorts are 9:16 — override */
+  .video-embed.shorts { padding-bottom: 177.78%; }
+  .video-embed iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    border: none;
+  }
+  .video-meta { padding: 1rem; }
+  .video-client {
+    font-family: 'DM Mono', monospace; font-size: 8px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .video-title { font-size: 1rem; font-weight: 400; line-height: 1.3; color: var(--ink); margin-bottom: 0.5rem; }
+  .video-roles { font-size: 0.78rem; font-style: italic; color: var(--mid); }
+
+  /* Credits-only cards for non-video work */
+  .credits-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--rule); border: 0.5px solid var(--rule);
+  }
+  .credit-card {
+    background: var(--bg); padding: 1.5rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    position: relative; overflow: hidden; transition: background 0.2s;
+  }
+  .credit-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 2px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.76,0,0.24,1);
+  }
+  .credit-card:hover { background: var(--card); }
+  .credit-card:hover::after { transform: scaleX(1); }
+  .credit-client {
+    font-family: 'DM Mono', monospace; font-size: 8px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);
+  }
+  .credit-title { font-size: 1.05rem; font-weight: 400; line-height: 1.3; }
+  .credit-roles { font-size: 0.78rem; font-style: italic; color: var(--mid); margin-top: auto; }
+
+  /* ── PHOTO SECTION ── */
+  .photo-group { margin-bottom: 4rem; }
+  .photo-group-label {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .photo-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;
+  }
+  .photo-slot {
+    aspect-ratio: 4/3; background: var(--card);
+    border: 0.5px solid var(--rule); border-radius: 4px;
+    overflow: hidden; position: relative;
+  }
+  .photo-slot img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; transition: transform 0.4s ease;
+  }
+  .photo-slot:hover img { transform: scale(1.04); }
+  /* Placeholder slot style */
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 0.5rem;
+    background: var(--card);
+  }
+  .photo-placeholder-icon {
+    width: 32px; height: 32px;
+    border: 1.5px solid var(--rule); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .photo-placeholder-icon::after {
+    content: '+'; font-size: 16px; color: var(--mid); font-family: sans-serif; font-weight: 300;
+  }
+  .photo-placeholder-label {
+    font-family: 'DM Mono', monospace; font-size: 8px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid);
+  }
+  /* SOCO upload note box */
+  .upload-note {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--accent-lt);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+  }
+  .upload-note-title {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .upload-note p {
+    font-size: 0.88rem; font-family: 'DM Mono', monospace;
+    font-weight: 300; color: var(--ink); line-height: 1.7;
+  }
+  .upload-note code {
+    background: rgba(42,127,127,0.12); padding: 1px 5px;
+    border-radius: 2px; font-size: 0.82rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 2fr;
+    gap: 5rem; align-items: start;
+  }
+  .about-sidebar { position: sticky; top: 7rem; }
+  .about-label {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid);
+    margin-bottom: 2rem; display: block;
+  }
+  .about-name-large { font-size: 2.5rem; font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; }
+  .about-name-large em { font-style: italic; color: var(--mid); display: block; }
+  .contact-item { display: flex; flex-direction: column; margin-bottom: 1rem; }
+  .contact-lbl {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.2rem;
+  }
+  .contact-val { font-size: 0.9rem; color: var(--ink); }
+  .about-quote {
+    font-size: 1.85rem; font-weight: 300; font-style: italic; line-height: 1.4;
+    border-left: 2px solid var(--accent); padding-left: 2rem;
+    margin-bottom: 2.5rem; color: var(--ink);
+  }
+  .about-text { font-size: 1.05rem; font-weight: 300; color: var(--mid); line-height: 1.9; }
+  .credentials { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .cred-tag {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.4rem 0.9rem; border: 0.5px solid var(--rule);
+    color: var(--mid); border-radius: 999px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 3rem; border-top: 0.5px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-name {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid);
+  }
+  .footer-copy { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--rule); letter-spacing: 0.1em; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 0 1.5rem 3rem; }
+    .hero-scroll { display: none; }
+    .video-grid, .credits-grid, .photo-grid { grid-template-columns: 1fr 1fr; }
+    .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-sidebar { position: static; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .video-grid, .credits-grid, .photo-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-name">Kimberly Wozniak</a>
+  <ul class="nav-links">
+    <li><a href="#video">Video</a></li>
+    <li><a href="#photos">Photos</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="mailto:kim.wozniak@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-rule"></div>
+  <p class="hero-eyebrow">Senior Content Producer &amp; Social Media Strategist</p>
+  <h1 class="hero-title">Kimberly<br><em>Wozniak</em></h1>
+  <p class="hero-desc">Stories built like five-act plays — from broadcast to brand, from transit corridors to global feeds.</p>
+  <span class="hero-scroll">Scroll</span>
+</section>
+
+<!-- TICKER -->
+<div class="disciplines" aria-hidden="true">
+  <div class="disciplines-track">
+    <span class="dot">&#9679;</span><span>Senior Producer</span>
+    <span class="dot">&#9679;</span><span>Director</span>
+    <span class="dot">&#9679;</span><span>Writer</span>
+    <span class="dot">&#9679;</span><span>Editor</span>
+    <span class="dot">&#9679;</span><span>Social Strategy</span>
+    <span class="dot">&#9679;</span><span>Content Production</span>
+    <span class="dot">&#9679;</span><span>Brand Storytelling</span>
+    <span class="dot">&#9679;</span><span>Broadcast</span>
+    <span class="dot">&#9679;</span><span>Senior Producer</span>
+    <span class="dot">&#9679;</span><span>Director</span>
+    <span class="dot">&#9679;</span><span>Writer</span>
+    <span class="dot">&#9679;</span><span>Editor</span>
+    <span class="dot">&#9679;</span><span>Social Strategy</span>
+    <span class="dot">&#9679;</span><span>Content Production</span>
+    <span class="dot">&#9679;</span><span>Brand Storytelling</span>
+    <span class="dot">&#9679;</span><span>Broadcast</span>
+  </div>
+</div>
+
+<!-- VIDEO SECTION -->
+<section id="video">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">Video Production</span>
+  </div>
+
+  <!-- Freelance / Current Work -->
+  <div class="video-group">
+    <p class="video-group-label">Freelance — Current Work</p>
+    <div class="video-grid">
+
+      <div class="video-card">
+        <div class="video-embed shorts">
+          <iframe src="https://www.youtube.com/embed/2YlvqINy26I" allowfullscreen loading="lazy" title="Solo Travel Collection Ad"></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-client">SOCO Travel</p>
+          <h3 class="video-title">Solo Travel Collection — Brand Ad</h3>
+          <p class="video-roles">Producer · Director</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed shorts">
+          <iframe src="https://www.youtube.com/embed/wb1WCnvClZg" allowfullscreen loading="lazy" title="Finland Reel"></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-client">SOCO Travel</p>
+          <h3 class="video-title">Finland Travel Reel</h3>
+          <p class="video-roles">Producer · Editor</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed shorts">
+          <iframe src="https://www.youtube.com/embed/3rZXZ8x9RMw" allowfullscreen loading="lazy" title="BYOMA Sephora with Event Wise"></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-client">BYOMA × Event Wise × Sephora</p>
+          <h3 class="video-title">Sephora Event Coverage</h3>
+          <p class="video-roles">Producer · Director</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Metrolinx -->
+  <div class="video-group">
+    <p class="video-group-label">Metrolinx / GO Transit — Senior Producer</p>
+    <div class="video-grid">
+
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/1005Ug2fGqE" allowfullscreen loading="lazy" title="Metrolinx video 1"></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-client">Metrolinx</p>
+          <h3 class="video-title">Metrolinx Production</h3>
+          <p class="video-roles">Senior Producer</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/xOoZounCGOU" allowfullscreen loading="lazy" title="Metrolinx video 2"></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-client">Metrolinx</p>
+          <h3 class="video-title">Metrolinx Production</h3>
+          <p class="video-roles">Senior Producer</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/D5wyZEIaME0" allowfullscreen loading="lazy" title="Metrolinx video 3"></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-client">Metrolinx</p>
+          <h3 class="video-title">Metrolinx Production</h3>
+          <p class="video-roles">Senior Producer</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Rogers Media -->
+  <div class="video-group">
+    <p class="video-group-label">Rogers Media — Your World This Week</p>
+    <div class="video-grid">
+
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/PMhHZCGaw0w" allowfullscreen loading="lazy" title="Rogers video 1"></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-client">Rogers Media</p>
+          <h3 class="video-title">Your World This Week</h3>
+          <p class="video-roles">Senior Producer · Writer · Editor</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/FdtwbxgV4mo" allowfullscreen loading="lazy" title="Rogers video 2"></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-client">Rogers Media</p>
+          <h3 class="video-title">Your World This Week</h3>
+          <p class="video-roles">Senior Producer · Writer · Editor</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/FkdVOLFV04M" allowfullscreen loading="lazy" title="Rogers video 3"></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-client">Rogers Media</p>
+          <h3 class="video-title">Your World This Week</h3>
+          <p class="video-roles">Writer · Director · Producer · Editor</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Additional credits (no video available) -->
+  <div class="video-group">
+    <p class="video-group-label">Additional Credits</p>
+    <div class="credits-grid">
+
+      <div class="credit-card">
+        <span class="credit-client">GO Transit</span>
+        <h3 class="credit-title">Behind the Scenes: Willowbrook Rail Maintenance Facility</h3>
+        <p class="credit-roles">Senior Producer · Writer</p>
+      </div>
+
+      <div class="credit-card">
+        <span class="credit-client">Metrolinx</span>
+        <h3 class="credit-title">Black History Month — GO Bus Wrap</h3>
+        <p class="credit-roles">Senior Producer · Director</p>
+      </div>
+
+      <div class="credit-card">
+        <span class="credit-client">Metrolinx</span>
+        <h3 class="credit-title">Workplace Harassment &amp; Discrimination Campaign</h3>
+        <p class="credit-roles">Senior Producer</p>
+      </div>
+
+      <div class="credit-card">
+        <span class="credit-client">Metrolinx</span>
+        <h3 class="credit-title">International Women's Day &amp; STEM</h3>
+        <p class="credit-roles">Senior Producer · Assistant Editor</p>
+      </div>
+
+      <div class="credit-card">
+        <span class="credit-client">GO Transit</span>
+        <h3 class="credit-title">GO Train Derailment Exercise Course</h3>
+        <p class="credit-roles">Writer · Producer</p>
+      </div>
+
+      <div class="credit-card">
+        <span class="credit-client">Metrolinx</span>
+        <h3 class="credit-title">Ollie Autonomous Vehicle Pilot</h3>
+        <p class="credit-roles">Co-Writer · Director · Producer</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO SECTION -->
+<section id="photos">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">Still Production</span>
+  </div>
+
+  <!-- Metrolinx Photos -->
+  <div class="photo-group">
+    <p class="photo-group-label">Metrolinx — Campaign Photography · Senior Producer</p>
+    <div class="photo-grid">
+      <!--
+        TO ADD YOUR METROLINX PHOTOS:
+        Replace each src="YOUR_IMAGE_FILE.jpg" with your actual image filename.
+        Save your photos in the same folder as this HTML file.
+        Example: src="metrolinx-presto-1.jpg"
+      -->
+      <div class="photo-slot">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon"></div>
+          <span class="photo-placeholder-label">Add photo</span>
+        </div>
+        <!-- Once you have the image: replace the div above with: <img src="metrolinx-photo-1.jpg" alt="PRESTO VI Campaign"> -->
+      </div>
+      <div class="photo-slot">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon"></div>
+          <span class="photo-placeholder-label">Add photo</span>
+        </div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon"></div>
+          <span class="photo-placeholder-label">Add photo</span>
+        </div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon"></div>
+          <span class="photo-placeholder-label">Add photo</span>
+        </div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon"></div>
+          <span class="photo-placeholder-label">Add photo</span>
+        </div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon"></div>
+          <span class="photo-placeholder-label">Add photo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCO Travel Photos -->
+  <div class="photo-group">
+    <p class="photo-group-label">SOCO Travel (Solo Travel Collection) — Content Producer</p>
+    <div class="photo-grid">
+      <div class="photo-slot">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon"></div>
+          <span class="photo-placeholder-label">Add photo</span>
+        </div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon"></div>
+          <span class="photo-placeholder-label">Add photo</span>
+        </div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon"></div>
+          <span class="photo-placeholder-label">Add photo</span>
+        </div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon"></div>
+          <span class="photo-placeholder-label">Add photo</span>
+        </div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon"></div>
+          <span class="photo-placeholder-label">Add photo</span>
+        </div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon"></div>
+          <span class="photo-placeholder-label">Add photo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="upload-note">
+      <p class="upload-note-title">How to add your SOCO photos</p>
+      <p>
+        1. Save your photo files (JPG or PNG) in the same folder as this HTML file.<br>
+        2. Open this file in a text editor (TextEdit on Mac, Notepad on Windows).<br>
+        3. Find the SOCO section — search for <code>Add photo</code>.<br>
+        4. Replace each placeholder block with: <code>&lt;img src="your-photo-name.jpg" alt="SOCO Travel"&gt;</code><br>
+        5. Save and refresh in your browser to preview.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <span class="section-title">About</span>
+  </div>
+  <div class="about-inner">
+    <aside class="about-sidebar">
+      <span class="about-label">Contact</span>
+      <div class="about-name-large">Kimberly<br><em>Wozniak</em></div>
+      <div class="contact-item">
+        <span class="contact-lbl">Email</span>
+        <a href="mailto:kim.wozniak@gmail.com" class="contact-val" style="color:var(--accent);text-decoration:none;">kim.wozniak@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-lbl">Instagram</span>
+        <a href="https://instagram.com/suburbanwoz" target="_blank" class="contact-val" style="color:var(--accent);text-decoration:none;">@suburbanwoz</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-lbl">Based</span>
+        <span class="contact-val">Toronto, ON</span>
+      </div>
+    </aside>
+    <div>
+      <blockquote class="about-quote">
+        "I craft all my stories like a Shakespearean play — five acts, every time."
+      </blockquote>
+      <p class="about-text">
+        I tell stories and work behind the scenes to bring them to life. I lead creative people — videographers, editors, writers, talent — because I've been all of them. That fluency across the creative process is what makes the work land.<br><br>
+        Over a decade spanning broadcast at Rogers Media and senior production roles at Metrolinx, I've built campaigns that move people — literally and figuratively. I can spot a flash frame at a mile. I understand how a transit corridor and a social feed share the same grammar: attention, movement, meaning.
+      </p>
+      <div class="credentials">
+        <span class="cred-tag">Radio &amp; Television Arts — TMU</span>
+        <span class="cred-tag">Media Information &amp; Technoculture — UWO</span>
+        <span class="cred-tag">Rogers Media</span>
+        <span class="cred-tag">Metrolinx / GO Transit</span>
+        <span class="cred-tag">SOCO Travel</span>
+        <span class="cred-tag">ON Fitness</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Kimberly Wozniak — Senior Content Producer</span>
+  <span class="footer-copy">Toronto · 2025</span>
+</footer>
+
+</body>
+</html>
